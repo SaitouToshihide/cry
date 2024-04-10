@@ -3489,6 +3489,27 @@ sysabs  <- function(hkl,SG) {
   #########            CUBIC: 195 to 230
   #########
   #########################################################################################################################
+  if (sym_number == 225)
+  {
+    hkl[hkl[,1]%%2 != 0 & hkl[,2]%%2 == 0 & hkl[,3]%%2 == 0,4] <- NA
+    hkl[hkl[,1]%%2 == 0 & hkl[,2]%%2 != 0 & hkl[,3]%%2 == 0,4] <- NA
+    hkl[hkl[,1]%%2 == 0 & hkl[,2]%%2 == 0 & hkl[,3]%%2 != 0,4] <- NA
+    hkl[hkl[,1]%%2 != 0 & hkl[,2]%%2 != 0 & hkl[,3]%%2 == 0,4] <- NA
+    hkl[hkl[,1]%%2 == 0 & hkl[,2]%%2 != 0 & hkl[,3]%%2 != 0,4] <- NA
+    hkl[hkl[,1]%%2 != 0 & hkl[,2]%%2 == 0 & hkl[,3]%%2 != 0,4] <- NA
+  }
+  if (sym_number == 228)
+  {
+    hkl[(hkl[,1]+hkl[,2]+hkl[,3])%%2 != 0,4] <- NA
+  }
+  if (sym_number == 229)
+  {
+    hkl[(hkl[,1]+hkl[,2]+hkl[,3])%%2 != 0,4] <- NA
+  }
+  if (sym_number == 230)
+  {
+    hkl[(hkl[,1]+hkl[,2]+hkl[,3])%%2 != 0,4] <- NA
+  }
 
   # Delete systematic absences
   idx <- which(complete.cases(hkl))
